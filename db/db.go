@@ -16,14 +16,14 @@ var err error
 
 func Init() {
 	configuration := config.GetConfig()
+
 	host := configuration.DB_HOST
 	password := configuration.DB_PASSWORD
 	port := configuration.DB_PORT
 	database := configuration.DB_NAME
 	user := configuration.DB_USERNAME
-	fmt.Printf("POST XXXX%s\n", port)
+
 	connect_string := fmt.Sprintf("host=%v user=%v password=%v dbname=%v port=%v sslmode=disable TimeZone=Asia/Shanghai", host, user, password, database, port)
-	fmt.Printf(connect_string)
 	db, err = gorm.Open(postgres.Open(connect_string), &gorm.Config{})
 
 	if err != nil {
